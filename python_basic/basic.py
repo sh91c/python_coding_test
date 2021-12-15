@@ -232,5 +232,63 @@ def basic():
 	# math: 필수적인 수학적 기능을 제공, 팩토리얼, 제곱근, 최대공약수(GCD),
 	# 삼각함수 관련, pi와 같은 상수를 포함
 
+	# ----------------------------------------------------
+	# 내장함수
+	# sum(): 이터러블 객체가 입력으로 주어졌을 때, 모든 원소의 합을 반환
+	# min(): 파라미터 2개 이상 들어왔을 때 가장 작은 값을 반환
+	# max(): 파라미터 2개 이상 들어왔을 때 가장 큰 값 반환
+	# eval(): 수학 수식이 문자열 형식으로 들어오면 해당 수식을 계산한 결과를 반환
+	print()
+	result = eval("(3 + 5) * 7")
+	print("eval():", result)
+	# sorted(): 이터러블 객체가 들어왔을 때, 정렬된 결과를 반환
+	# 리스트의 원소로 리스트나 튜플이 존재할 때 특정한 기준에 따라서 정렬을 수행할 수 있다.
+	# 정렬 기준은 key 속성을 이용해 명시할 수 있다.
+	result = sorted([('홍길동', 35), ('이순신', 75), ('아무개', 50)], key = lambda x: x[1], reverse=True)
+	print(result)
+	# * 이터러블 객체는 기본으로 sort() 함수를 내장하고 있어서 굳이 sorted()를 사용하지 않고도
+	# 정렬을 할 수 있다. 이 경우 리스트 객체의 내부 값이 정렬된 값으로 바로 변경된다.
+	data = [9, 1, 8, 5, 4]
+	data.sort(reverse=True)
+	print(data)
+
+	# ----------------------------------------------------
+	# itertools: 반복되는 데이터를 처리하는 기능을 포함하고 있는 라이브러리
+	# 제공하는 클래스는 매우 다양하지만, 코딩테스트에서 가장 유용하게 사용할 수 있는 클래스는
+	# permutations(순열), combinations(조합)
+	###
+	# permutations는 리스트와 같은 이터러블 객체에서 r개의 데이터를 뽑아
+	# 일렬로 나열하는 모든 경우(순열)를 계산해준다.
+	# permutations는 클래스이므로 객체 초기화 이후 리스트로 캐스팅한다.
+	# 리스트 ['A', 'B', 'C']에서 3개(r=3)을 뽑아 나열하는 모든 경우를 출력하는 예시.
+	print()
+	from itertools import permutations
+	data = ['A', 'B', 'C']
+	for i in range(1, 4):
+		result = list(permutations(data, i))
+		print(f"permutations(순열) {i}개를 뽑아 나열하는 모든 경우:",result)
+	print()
 	
-	
+	# combinations는 이터러블 객체에서 r개의 데이터를 뽑아
+	# 순서를 고려하지 않고 나열하는 모든 경우(조합)을 계산한다.
+	# 마찬가지로 클래스이므로 객체 초기화 이후 리스트로 캐스팅한다.
+	from itertools import combinations
+	data = ['A', 'B', 'C']
+	for i in range(1, 4):
+		result = list(combinations(data, i))
+		print(f"combinations(조합) {i}개를 뽑는 모든 조합:", result)
+	print()
+
+	# product 는 permutations와 같이 이터러블 객체에서 r개의 데이터를 뽑아
+	# 일렬로 나열하는 모든 경우(순열)를 계산하지만, 원소를 중복해서 나열한다.
+	# product 객체를 초기화할 때는 뽑고자 하는 데이터의 수를
+	# repeat 속성값으로 넣어준다. 클래스 이므로 초기화 이후에는 리스트로 캐스팅.
+	# 리스트 ['A', 'B', 'C']에서, 중복을 포함하여 2개를 뽑아 나열하는 경우
+	# -> r개를 뽑아 나열하는 경우로 확인해보자
+	from itertools import product
+	data = ['A', 'B', 'C']
+	for i in range(1, 4):
+		result = list(product(data, repeat=i))
+		print(f"{i}개를 뽑는 모둔 순열 구하기(원소 중복 허용):{result}")
+
+	# 
