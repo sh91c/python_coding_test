@@ -6,7 +6,7 @@
 # 1.1.1. 잘못된 예시
 n = 3
 m = 4
-array = [ [0] * m ] * n
+array = [[0] * m] * n
 print("result_1:", array)
 
 array[1][1] = 5
@@ -16,7 +16,7 @@ print("result_2:", array)
 # 1.2.3. 정확한 예시 : 리스트 컴프리헨션을 통한 2차원 리스트 초기화
 print()
 array = [
-	[0] * m for _ in range(n)
+    [0] * m for _ in range(n)
 ]
 print("result_3:", array)
 
@@ -97,7 +97,7 @@ print()
 
 # ----------------------------------------------------
 # 튜플 자료형 : 불변
-num_tuple = (1, 2, 3, 4, )
+num_tuple = (1, 2, 3, 4,)
 print("튜플:", num_tuple)
 # 튜플에 어떤 원소의 값을 수정하면 에러 발생
 # 'tuple' objects does not support item assignment(튜플은 원소의 대입을 지원하지 않는다.)
@@ -132,19 +132,19 @@ print("튜플:", num_tuple)
 print()
 
 fruit_dict = {
-	"사과": "Apple",
-	"바나나": "Banana",
-	"코코넛": "Coconut"
+    "사과": "Apple",
+    "바나나": "Banana",
+    "코코넛": "Coconut"
 }
 
 fruit_data_list = [
-	fruit_dict.keys(),
-	fruit_dict.values(),
-	fruit_dict.items()
+    fruit_dict.keys(),
+    fruit_dict.values(),
+    fruit_dict.items()
 ]
 
 for sub_list in fruit_data_list:
-	print(sub_list)
+    print(sub_list)
 
 # ----------------------------------------------------
 # 집합 자료형; set, 셋
@@ -243,7 +243,7 @@ print("eval():", result)
 # sorted(): 이터러블 객체가 들어왔을 때, 정렬된 결과를 반환
 # 리스트의 원소로 리스트나 튜플이 존재할 때 특정한 기준에 따라서 정렬을 수행할 수 있다.
 # 정렬 기준은 key 속성을 이용해 명시할 수 있다.
-result = sorted([('홍길동', 35), ('이순신', 75), ('아무개', 50)], key = lambda x: x[1], reverse=True)
+result = sorted([('홍길동', 35), ('이순신', 75), ('아무개', 50)], key=lambda x: x[1], reverse=True)
 print(result)
 # * 이터러블 객체는 기본으로 sort() 함수를 내장하고 있어서 굳이 sorted()를 사용하지 않고도
 # 정렬을 할 수 있다. 이 경우 리스트 객체의 내부 값이 정렬된 값으로 바로 변경된다.
@@ -262,20 +262,22 @@ print(data)
 # 리스트 ['A', 'B', 'C']에서 3개(r=3)을 뽑아 나열하는 모든 경우를 출력하는 예시.
 print()
 from itertools import permutations
+
 data = ['A', 'B', 'C']
 for i in range(1, 4):
-	result = list(permutations(data, i))
-	print(f"permutations(순열) {i}개를 뽑아 나열하는 모든 경우:",result)
+    result = list(permutations(data, i))
+    print(f"permutations(순열) {i}개를 뽑아 나열하는 모든 경우:", result)
 print()
 
 # combinations는 이터러블 객체에서 r개의 데이터를 뽑아
 # 순서를 고려하지 않고 나열하는 모든 경우(조합)을 계산한다.
 # 마찬가지로 클래스이므로 객체 초기화 이후 리스트로 캐스팅한다.
 from itertools import combinations
+
 data = ['A', 'B', 'C']
 for i in range(1, 4):
-	result = list(combinations(data, i))
-	print(f"combinations(조합) {i}개를 뽑는 모든 조합:", result)
+    result = list(combinations(data, i))
+    print(f"combinations(조합) {i}개를 뽑는 모든 조합:", result)
 print()
 
 # product 는 permutations와 같이 이터러블 객체에서 r개의 데이터를 뽑아
@@ -285,9 +287,10 @@ print()
 # 리스트 ['A', 'B', 'C']에서, 중복을 포함하여 2개를 뽑아 나열하는 경우
 # -> r개를 뽑아 나열하는 경우로 확인해보자
 from itertools import product
+
 data = ['A', 'B', 'C']
 for i in range(1, 4):
-	result = list(product(data, repeat=i))
-	print(f"{i}개를 뽑는 모둔 순열 구하기(원소 중복 허용):{result}")
+    result = list(product(data, repeat=i))
+    print(f"{i}개를 뽑는 모둔 순열 구하기(원소 중복 허용):{result}")
 
 #
